@@ -5,6 +5,7 @@
 using IdentityServer4.Models;
 using System.Collections.Generic;
 using IdentityServer4;
+using IdentityServer4.Test;
 
 namespace Ids
 {
@@ -19,6 +20,26 @@ namespace Ids
                 new IdentityResources.Email()
             };
         }
+
+        public static List<TestUser> GetUsers()
+        {
+            return new List<TestUser>
+            {
+                new TestUser
+                {
+                    SubjectId = "1",
+                    Username = "alice",
+                    Password = "password"
+                },
+                new TestUser
+                {
+                    SubjectId = "2",
+                    Username = "bob",
+                    Password = "password"
+                }
+            };
+        }
+
 
         public static IEnumerable<ApiResource> GetApis()
         {
@@ -64,6 +85,7 @@ namespace Ids
                     AllowAccessTokensViaBrowser = false,
 
                     AccessTokenLifetime = 75,
+                    AbsoluteRefreshTokenLifetime = 100,
 
                     RedirectUris = { "http://localhost:21404/signin-oidc" },
                     FrontChannelLogoutUri = "http://localhost:21404/signout-oidc",

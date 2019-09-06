@@ -46,6 +46,7 @@ namespace Ids
             builder.AddInMemoryIdentityResources(Config.GetIdentityResources());
             builder.AddInMemoryApiResources(Config.GetApis());
             builder.AddInMemoryClients(Config.GetClients());
+            builder.AddTestUsers(Config.GetUsers());
 
             // in-memory, json config
             //builder.AddInMemoryIdentityResources(Configuration.GetSection("IdentityResources"));

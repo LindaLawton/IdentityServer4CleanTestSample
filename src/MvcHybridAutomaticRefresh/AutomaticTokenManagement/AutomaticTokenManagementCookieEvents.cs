@@ -70,9 +70,8 @@ namespace IdentityModel.AspNetCore
 
                         if (response.IsError)
                         {
-
-                           // await context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                             _logger.LogWarning("Error refreshing token: {error}", response.Error);
+                            context.RejectPrincipal();
                             return;
                         }
 
